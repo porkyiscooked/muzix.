@@ -111,25 +111,27 @@ const shaderGradientPresets = {
   heroRedShader: {
     type: 'waterPlane',
     color1: '#ff1b16',
-    color2: '#1a0000',
-    color3: '#ff6a40',
+    color2: '#000000',
+    color3: '#ffad98',
     positionX: 0,
-    positionY: 0.7,
+    positionY: -0.9,
     positionZ: 0,
     rotationX: 0,
     rotationY: 0,
-    rotationZ: 176,
-    brightness: 0.85,
-    uSpeed: 0.092,
-    uStrength: 2,
-    uDensity: 1.14,
+    rotationZ: 225,
+    brightness: 1.1,
+    uSpeed: 0.12,
+    uStrength: 3.2,
+    uDensity: 1.2,
     uFrequency: 0.78,
     uAmplitude: 0.152,
     reflection: 0.24,
     grain: 'off',
     grainBlending: 0,
     cameraZoom: 0.64,
-    cDistance: 4.9,
+    cDistance: 3.9,
+    cPolarAngle: 115,
+    enableTransition: false,
     fallback: '',
   },
 };
@@ -216,12 +218,16 @@ export default function ShaderGradientBackground({
 
       if (!ready) return;
 
-      import('@shadergradient/react')
-        .then((module) => {
+      Promise.all([
+        import('@shadergradient/react'),
+        variant === 'heroRedShader' ? import('./HeroWaveEnvelope') : Promise.resolve(null),
+      ])
+        .then(([module, waveModule]) => {
           if (!cancelled) {
             setShaderComponents({
               ShaderGradient: module.ShaderGradient,
               ShaderGradientCanvas: module.ShaderGradientCanvas,
+              HeroWaveEnvelope: waveModule?.default,
             });
           }
         })
@@ -234,7 +240,7 @@ export default function ShaderGradientBackground({
       cancelled = true;
       window.cancelAnimationFrame(frame);
     };
-  }, [isVisible, shaderComponents, staticOnly]);
+  }, [isVisible, shaderComponents, staticOnly, variant]);
 
   useEffect(() => {
     if (!shaderComponents || staticOnly) return undefined;
@@ -248,6 +254,7 @@ export default function ShaderGradientBackground({
 
   const ShaderGradient = shaderComponents?.ShaderGradient;
   const ShaderGradientCanvas = shaderComponents?.ShaderGradientCanvas;
+  const HeroWaveEnvelope = shaderComponents?.HeroWaveEnvelope;
   const presetShader = Object.fromEntries(
     Object.entries(preset).filter(([key]) => key !== 'fallback'),
   );
@@ -277,6 +284,7 @@ export default function ShaderGradientBackground({
               {...shaderProps}
               animate={shouldAnimate ? 'on' : 'off'}
             />
+            {HeroWaveEnvelope && <HeroWaveEnvelope animate={shouldAnimate} />}
           </ShaderGradientCanvas>
         </ShaderErrorBoundary>
       )}

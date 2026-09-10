@@ -5,64 +5,10 @@ import GrainOverlay from './GrainOverlay';
 import ShaderGradientBackground from './ShaderGradientBackground';
 import useSimpleScrollMotion from '../../hooks/useSimpleScrollMotion';
 
-function RevealLetter({ char, index, total, progress, invert = false }) {
-  const start = 0.08 + (index / Math.max(total, 1)) * 0.28;
-  const end = Math.min(start + 0.1, 0.62);
-  const opacity = useTransform(progress, [start, end], [0.46, 1]);
-  const y = useTransform(progress, [start, end], ['0.42em', '0em']);
-
-  return (
-    <motion.span
-      aria-hidden="true"
-      style={{ opacity, y }}
-      className={`inline-block will-change-transform ${invert ? 'text-[#050505]' : 'text-white'}`}
-    >
-      {char === ' ' ? '\u00A0' : char}
-    </motion.span>
-  );
-}
-
-function RevealWord({ word, startIndex, total, progress, invert = false }) {
-  return (
-    <span className="inline-block whitespace-nowrap">
-      {Array.from(word).map((char, index) => (
-        <RevealLetter
-          key={`${word}-${startIndex + index}-${char}`}
-          char={char}
-          index={startIndex + index}
-          total={total}
-          progress={progress}
-          invert={invert}
-        />
-      ))}
-    </span>
-  );
-}
-
-function getWordSegments(text) {
-  let letterIndex = 0;
-  const tokens = text.match(/\S+|\s+/g) ?? [];
-
-  return tokens.map((token, index) => {
-    if (/^\s+$/.test(token)) {
-      return { key: `space-${index}`, type: 'space' };
-    }
-
-    const segment = {
-      key: `${token}-${index}`,
-      type: 'word',
-      word: token,
-      startIndex: letterIndex,
-    };
-    letterIndex += Array.from(token).length;
-
-    return segment;
-  });
-}
-
-function ProgressText({ text, progress, className = '', invert = false, simple = false }) {
-  const segments = getWordSegments(text);
-  const totalLetters = Array.from(text.replace(/\s+/g, '')).length;
+function ProgressText({ text, progress, className = '', simple = false }) {
+  const opacity = useTransform(progress, [0.08, 0.28], [0, 1]);
+  const y = useTransform(progress, [0.08, 0.28], ['22px', '0px']);
+  const blur = useTransform(progress, [0.08, 0.28], ['blur(14px)', 'blur(0px)']);
 
   if (simple) {
     return (
@@ -76,24 +22,13 @@ function ProgressText({ text, progress, className = '', invert = false, simple =
   }
 
   return (
-    <p aria-label={text} className={className}>
-      {segments.map((segment) => {
-        if (segment.type === 'space') {
-          return <span key={segment.key}> </span>;
-        }
-
-        return (
-          <RevealWord
-            key={segment.key}
-            word={segment.word}
-            startIndex={segment.startIndex}
-            total={totalLetters}
-            progress={progress}
-            invert={invert}
-          />
-        );
-      })}
-    </p>
+    <motion.p
+      aria-label={text}
+      style={{ opacity, y, filter: blur }}
+      className={className}
+    >
+      {text}
+    </motion.p>
   );
 }
 
@@ -213,7 +148,6 @@ export default function PinnedRevealCard({
                 <ProgressText
                   text={body}
                   progress={pinProgress}
-                  invert={invert}
                   simple={stableMotion}
                   className={`max-w-2xl text-lg font-semibold leading-8 md:text-xl md:leading-9 lg:text-[1.28rem] lg:leading-9 xl:text-[1.42rem] xl:leading-10 ${
                     invert ? 'text-[#050505]' : 'text-white'

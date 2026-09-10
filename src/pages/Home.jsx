@@ -129,8 +129,8 @@ export default function Home() {
           <PinnedRevealCard
             id="overlap"
             eyebrow="Pinned commands"
-            title="Commands reveal while the card stays fixed."
-            body="Scroll through the panel and the commands come into view one by one, like a server queue building on top of the current track."
+            title="Commands settle into view with a soft blur."
+            body="Move through the panel and the bot commands fade in cleanly, like a Discord queue coming into focus."
             items={commandItems}
             theme="light"
           />
