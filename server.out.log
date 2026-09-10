@@ -17,3 +17,5 @@
 1:27:32 am [vite] (client) hmr update /src/index.css, /src/components/home/MiduStyleHero.jsx
 1:27:36 am [vite] (client) hmr update /src/index.css
 1:27:57 am [vite] (client) hmr update /src/index.css, /src/components/home/HeroWaveEnvelope.jsx
+1:33:25 am [vite] (client) hmr update /src/index.css, /src/components/layout/Preloader.jsx
+1:33:25 am [vite] (client) hmr update /src/index.css, /src/components/layout/Navbar.jsx
