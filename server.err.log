@@ -34,3 +34,35 @@ Incoming: [false, , true, miduFooter]
 1:29:43 am [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
 1:29:43 am [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
 1:29:43 am [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+1:33:27 am [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] Error:[0m Encountered diff marker
+    [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/layout/Navbar.jsx:1:1 [38;5;246m][0m
+    [38;5;246m│[0m
+ [38;5;246m 1 │[0m <<<<<<<[38;5;249m [0m[38;5;249mH[0m[38;5;249mE[0m[38;5;249mA[0m[38;5;249mD[0m
+ [38;5;240m   │[0m ───┬───  
+ [38;5;240m   │[0m    ╰───── between this marker and `=======` is the code that we're merging into
+ [38;5;240m   │[0m 
+ [38;5;246m 5 │[0m =======
+ [38;5;240m   │[0m ───┬───  
+ [38;5;240m   │[0m    ╰───── between this marker and `>>>>>>>` is the incoming code
+ [38;5;240m   │[0m 
+ [38;5;246m10 │[0m >>>>>>>[38;5;249m [0m[38;5;249m2[0m[38;5;249m4[0m[38;5;249mf[0m[38;5;249mb[0m[38;5;249ma[0m[38;5;249m4[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249m2[0m[38;5;249m4[0m[38;5;249m0[0m[38;5;249m9[0m[38;5;249m7[0m[38;5;249m4[0m[38;5;249mc[0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m6[0m[38;5;249m3[0m[38;5;249m9[0m[38;5;249m3[0m[38;5;249m2[0m[38;5;249m5[0m[38;5;249m5[0m[38;5;249m7[0m[38;5;249m7[0m[38;5;249mf[0m[38;5;249m9[0m[38;5;249m3[0m[38;5;249me[0m[38;5;249m5[0m[38;5;249m9[0m[38;5;249m5[0m[38;5;249m7[0m[38;5;249m3[0m[38;5;249mc[0m[38;5;249m7[0m[38;5;249md[0m[38;5;249md[0m[38;5;249m3[0m
+ [38;5;240m   │[0m ───┬───  
+ [38;5;240m   │[0m    ╰───── this marker concludes the conflict region
+ [38;5;240m   │[0m 
+ [38;5;240m   │[0m [38;5;115mHelp[0m: Conflict markers indicate that a merge was started but could not be completed due to merge conflicts.
+ [38;5;240m   │[0m       To resolve a conflict, keep only the code you want and then delete the lines containing conflict markers.
+ [38;5;240m   │[0m       If you're having merge conflicts after pulling new code, the top section is the code you already had and the bottom section is the remote code.
+ [38;5;240m   │[0m       If you're in the middle of a rebase, the top section is the code being rebased onto and the bottom section is the code coming from the current commit being rebased.
+ [38;5;240m   │[0m       If you have nested conflicts, resolve the outermost conflict first.
+[38;5;246m────╯[0m
+
+  Plugin: vite:oxc
+  File: C:/Users/piu45/Downloads/muzix/src/components/layout/Navbar.jsx
+      at transformWithOxc (file:///C:/Users/piu45/Downloads/muzix/node_modules/vite/dist/node/chunks/node.js:3343:19)
+      at TransformPluginContext.transform (file:///C:/Users/piu45/Downloads/muzix/node_modules/vite/dist/node/chunks/node.js:3411:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/piu45/Downloads/muzix/node_modules/vite/dist/node/chunks/node.js:30164:51)
+      at async loadAndTransform (file:///C:/Users/piu45/Downloads/muzix/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///C:/Users/piu45/Downloads/muzix/node_modules/vite/dist/node/chunks/node.js:24306:20)
+1:33:27 am [vite] (client) [console.error] [vite] Failed to reload /src/components/layout/Navbar.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
