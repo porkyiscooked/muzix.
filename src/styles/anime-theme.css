@@ -47,7 +47,13 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .idol-button.secondary { background:#fff; color:var(--idol-ink); border-color:white; }
 .idol-scroll { position:absolute; right:4%; bottom:66px; width:48px; height:48px; border:1px solid #ffffff90; border-radius:50%; display:grid; place-items:center; }
 .hero-issue { position:absolute; right:4%; bottom:22px; font-size:10px; }
-.idol-ribbon { display:flex; align-items:center; justify-content:space-around; gap:25px; padding:22px 3%; background:var(--idol-blue); color:#3d627e; font-size:13px; font-weight:750; border-bottom:1px solid #d9e7f3; }
+.idol-ribbon { position:relative; overflow:hidden; padding:22px 0; background:var(--idol-blue); color:#3d627e; font-size:13px; font-weight:750; border-bottom:1px solid #d9e7f3; }
+.idol-ribbon-track { display:flex; width:max-content; animation:idol-ribbon-drift 32s linear infinite; }
+.idol-ribbon-group { display:flex; flex-shrink:0; width:max(100vw,900px); align-items:center; justify-content:space-around; gap:25px; padding:0 24px; }
+.idol-ribbon-group span { white-space:nowrap; }
+.idol-ribbon.is-paused .idol-ribbon-track, .idol-ribbon:hover .idol-ribbon-track, .idol-ribbon:focus-within .idol-ribbon-track { animation-play-state:paused; }
+.idol-ribbon-toggle { position:absolute; right:10px; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:#f5fbff; border:1px solid #c4d9e8; }
+@keyframes idol-ribbon-drift { to { transform:translateX(-50%); } }
 .idol-ribbon svg { width:18px; flex-shrink:0; }
 .idol-section { padding:110px 5%; max-width:1800px; margin:0 auto; }
 .idol-label { font-size:11px; font-weight:750; color:var(--idol-red); margin-bottom:26px; }
@@ -130,7 +136,10 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .idol-loader { position:fixed; inset:0; z-index:999999; background:#fff4f7; color:var(--idol-ink); display:flex; flex-direction:column; justify-content:space-between; padding:25px 5%; }
 .loader-heading { display:flex; align-items:center; gap:12px; font-size:24px; font-weight:750; }
 .loader-heading span { margin-left:auto; font-size:10px; color:var(--idol-muted); }
-.loader-center { align-self:center; width:min(700px,100%); }
+.loader-center { position:relative; align-self:center; width:min(920px,100%); padding-left:205px; }
+.loader-companion { position:absolute; top:9px; left:0; width:160px; height:160px; }
+.loader-companion img { width:100%; height:100%; object-fit:cover; border-radius:50%; border:6px solid white; box-shadow:0 8px 30px #b936631c; }
+.loader-companion>span { position:absolute; bottom:0; right:0; display:grid; place-items:center; width:42px; height:42px; color:var(--idol-red); background:#ffe1ed; border:3px solid white; border-radius:50%; transform:rotate(12deg); }
 .loader-center>svg { color:var(--idol-red); margin-bottom:24px; }
 .loader-center h2 { font-size:64px; line-height:1.05; }
 .loader-center em { color:var(--idol-red); font-family:Georgia,serif; }
@@ -189,9 +198,9 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
   .idol-button { font-size:12px; padding:12px 14px; gap:7px; min-height:48px; }
   .idol-scroll { bottom:14px; width:36px; height:36px; }
   .hero-issue { left:6%; right:auto; bottom:25px; font-size:9px; }
-  .idol-ribbon { gap:12px; font-size:9px; padding:18px 4%; }
+  .idol-ribbon { font-size:11px; padding:18px 0; }
+  .idol-ribbon-group { width:720px; gap:20px; padding:0 18px; }
   .idol-ribbon svg { width:12px; }
-  .idol-ribbon svg:last-child { display:none; }
   .idol-section, .idol-home .story-shell, .idol-home .story-community { padding:65px 6%; }
   .idol-home h2 { font-size:38px; }
   .idol-intro, .idol-guide, .idol-home .story-strengths, .creator-bottom { grid-template-columns:1fr; gap:35px; }
@@ -220,6 +229,9 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
   .footer-legal { font-size:10px; }
   .loader-heading span { max-width:110px; font-size:8px; }
   .loader-center h2 { font-size:45px; }
+  .loader-center { padding-left:0; }
+  .loader-companion { position:relative; top:auto; width:110px; height:110px; margin-bottom:22px; }
+  .loader-companion>span { width:34px; height:34px; }
   .idol-subpage h1 { font-size:45px; overflow-wrap:anywhere; }
   .subpage-art { height:170px; margin-top:-20px; margin-bottom:30px; }
   .idol-docs button .editorial-display { font-size:22px; }
@@ -228,3 +240,13 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 }
 @media(max-width:370px) { .idol-hero h1 { font-size:76px; } .idol-hero h1 .title-star { font-size:38px; } .idol-command-grid { grid-template-columns:1fr; } .footer-wordmark { font-size:76px; } .studio-nav-brand img { width:18px; height:18px; } }
 @media(prefers-reduced-motion:reduce) { .anime-app *, .studio-nav * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
+@media(prefers-reduced-motion:reduce) {
+  .idol-ribbon-track { width:100%; animation:none; }
+  .idol-ribbon-group { width:100%; gap:12px; flex-wrap:wrap; }
+  .idol-ribbon-group:nth-child(2), .idol-ribbon-toggle { display:none; }
+}
+@media(max-height:650px) {
+  .loader-center h2 { font-size:36px; }
+  .loader-count { font-size:48px; margin-top:12px; }
+  .loader-companion { width:86px; height:86px; margin-bottom:12px; }
+}

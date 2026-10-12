@@ -2,7 +2,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { animate } from 'animejs';
-import { Headphones } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function Preloader() {
   const [show, setShow] = useState(true);
@@ -19,5 +19,5 @@ export default function Preloader() {
     });
     return () => { animation.revert(); document.body.style.overflow = previous; };
   }, [reduced]);
-  return createPortal(<AnimatePresence>{show && <motion.div className="idol-loader" exit={{ opacity: 0, y: reduced ? 0 : -24 }} transition={{ duration: reduced ? 0 : 0.4 }}><div className="loader-heading"><img src="/images/muzix_new.png" alt="" width="30" height="30" /> Muzix <span>GETTING THE BAND TOGETHER</span></div><div className="loader-center"><Headphones size={44} /><h2>Your next<br /><em>favourite feeling.</em></h2><span className="loader-count">{String(progress).padStart(3, '0')}<small>%</small></span><div className="loader-track"><span style={{ transform: `scaleX(${progress / 100})` }} /></div></div><div className="loader-bottom">MUSIC LIVES CLOSER TO YOU.<span>MUZIX</span></div></motion.div>}</AnimatePresence>, document.body);
+  return createPortal(<AnimatePresence>{show && <motion.div className="idol-loader" exit={{ opacity: 0, y: reduced ? 0 : -24 }} transition={{ duration: reduced ? 0 : 0.4 }}><div className="loader-heading"><img src="/images/muzix_new.png" alt="" width="30" height="30" /> Muzix <span>GETTING THE BAND TOGETHER</span></div><div className="loader-center"><div className="loader-companion"><img src="/images/muzix-idol-portrait.webp" alt="Muzix, your music companion" width="160" height="160" fetchPriority="high" /><span aria-hidden="true"><Heart size={20} /></span></div><h2>Your next<br /><em>favourite feeling.</em></h2><span className="loader-count">{String(progress).padStart(3, '0')}<small>%</small></span><div className="loader-track"><span style={{ transform: `scaleX(${progress / 100})` }} /></div></div><div className="loader-bottom">MUSIC LIVES CLOSER TO YOU.<span>MUZIX</span></div></motion.div>}</AnimatePresence>, document.body);
 }

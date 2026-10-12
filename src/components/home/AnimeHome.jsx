@@ -7,6 +7,7 @@ import WeightChartFeatures from './WeightChartFeatures';
 import MiduTestimonials from './MiduTestimonials';
 import CreatorChapter from './CreatorChapter';
 import scrollToSection from '../../utils/scrollToSection';
+import MusicRibbon from './MusicRibbon';
 
 function Reveal({ children, className = '' }) {
   const reduced = useReducedMotion();
@@ -65,7 +66,7 @@ export default function AnimeHome() {
       <div className="hero-issue">THE MUZIX PROJECT / VOL. 01</div>
     </section>
 
-    <div className="idol-ribbon" aria-hidden="true"><span>GOOD MUSIC</span><Sparkles /><span>GREAT COMPANY</span><Sparkles /><span>ONE VOICE CHANNEL</span><Sparkles /></div>
+    <MusicRibbon />
 
     <section className="idol-intro idol-section" id="about"><Reveal><p className="idol-label">01 / MEET YOUR NEW MUSIC COMPANION</p><h2>A soundtrack for<br />your <em>main-character</em> moments.</h2></Reveal><Reveal className="intro-aside"><Heart size={28} /><p>Muzix turns simple Discord commands into a shared listening experience. High-quality playback, smart queues, playlists, filters, lyrics, and autoplay. All in the place your friends already call home.</p><a href={SUPPORT_URL} target="_blank" rel="noreferrer" className="idol-link">Meet the community <ArrowUpRight size={18} /></a></Reveal></section>
 
