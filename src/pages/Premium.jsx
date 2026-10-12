@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Check, Headphones } from 'lucide-react';
-import ShaderGradientBackground from '../components/home/ShaderGradientBackground';
 import useSimpleScrollMotion from '../hooks/useSimpleScrollMotion';
 
 const pricingPlans = [
@@ -51,13 +50,8 @@ export default function Premium() {
   const stableMotion = reducedMotion || simpleScrollMotion;
 
   return (
-    <section className="relative -mt-24 min-h-screen overflow-hidden bg-[#050505] px-5 pb-20 pt-36 text-[#f4f1ea] sm:px-8 md:px-10 md:pt-40">
-      <ShaderGradientBackground
-        variant="midu"
-        intensity="midu"
-        className="opacity-75"
-        canvasClassName="mix-blend-screen"
-      />
+    <section className="idol-subpage idol-premium relative -mt-24 min-h-screen overflow-hidden px-5 pb-20 pt-36 sm:px-8 md:px-10 md:pt-40">
+      <div className="subpage-art" aria-hidden="true"><img src="/images/muzix-idol-concert.webp" alt="" /></div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-10 border-y border-[#f4f1ea]/15 py-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
@@ -67,7 +61,7 @@ export default function Premium() {
               <p className="editorial-label text-xs uppercase text-accent-primary/78">P R E M I U M&nbsp;&nbsp; A C C E S S</p>
             </div>
             <h1 className="editorial-display text-6xl font-black uppercase leading-[0.86] tracking-normal sm:text-7xl md:text-9xl">
-              Premium sound access.
+              Your backstage pass.
             </h1>
           </div>
 
@@ -82,6 +76,7 @@ export default function Premium() {
               key={code}
               type="button"
               onClick={() => setCurrency(code)}
+              aria-pressed={currency === code}
               className={`min-h-11 border px-6 py-2 text-sm font-black uppercase transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-primary ${
                 currency === code
                   ? 'border-accent-primary bg-accent-primary text-white'
@@ -155,10 +150,10 @@ export default function Premium() {
                 ))}
               </ul>
 
-              <button className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 border border-current bg-white px-5 py-3 text-sm font-black uppercase text-[#050505] transition-colors hover:bg-accent-primary hover:text-white">
+              <a href="https://discord.com/invite/TVR4efd8ts" target="_blank" rel="noreferrer" className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 border border-current bg-white px-5 py-3 text-sm font-black uppercase text-[#050505] transition-colors hover:bg-accent-primary hover:text-white">
                 <Headphones size={17} aria-hidden="true" />
                 {plan.btnText}
-              </button>
+              </a>
             </motion.article>
           ))}
         </div>

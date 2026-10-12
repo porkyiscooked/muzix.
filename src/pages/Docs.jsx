@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ChevronDown, FileText } from 'lucide-react';
-import ShaderGradientBackground from '../components/home/ShaderGradientBackground';
 import useSimpleScrollMotion from '../hooks/useSimpleScrollMotion';
 
 const docsContent = [
@@ -162,13 +161,8 @@ export default function Docs() {
   }, [location.state]);
 
   return (
-    <section className="relative -mt-24 min-h-screen overflow-hidden bg-[#050505] px-5 pb-20 pt-36 text-[#f4f1ea] sm:px-8 md:px-10 md:pt-40">
-      <ShaderGradientBackground
-        variant="midu"
-        intensity="midu"
-        className="opacity-75"
-        canvasClassName="mix-blend-screen"
-      />
+    <section className="idol-subpage idol-docs relative -mt-24 min-h-screen overflow-hidden px-5 pb-20 pt-36 sm:px-8 md:px-10 md:pt-40">
+      <div className="subpage-art" aria-hidden="true"><img src="/images/muzix-idol-concert.webp" alt="" /></div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-12 border-y border-[#f4f1ea]/15 py-10 lg:py-12">
@@ -224,6 +218,8 @@ export default function Docs() {
               }`}
             >
               <button 
+                aria-expanded={openSection === section.id}
+                aria-controls={`docs-panel-${section.id}`}
                 onClick={() => setOpenSection(openSection === section.id ? null : section.id)}
                 className="flex w-full items-center justify-between gap-6 p-6 text-left md:p-8"
               >
@@ -240,12 +236,14 @@ export default function Docs() {
               <AnimatePresence>
                 {openSection === section.id && (
                   <motion.div
+                    id={`docs-panel-${section.id}`}
+                    className="overflow-hidden"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    transition={{ duration: reducedMotion ? 0 : 0.3, ease: "easeInOut" }}
                   >
-                    <div className="docs-copy px-6 pb-8 md:px-8 [&_code]:!bg-white/10 [&_code]:!text-accent-primary [&_h3]:!text-white [&_h3]:!text-3xl [&_h3]:!font-black [&_h3]:!uppercase [&_li]:!text-[#f4f1ea]/76 [&_li]:!text-xl [&_li]:!leading-9 [&_p]:!text-[#f4f1ea]/76 [&_p]:!text-xl [&_p]:!leading-9 [&_strong]:!text-white">
+                    <div className="docs-copy px-6 pb-8 md:px-8">
                       {section.content}
                     </div>
                   </motion.div>

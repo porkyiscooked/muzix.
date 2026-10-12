@@ -4,6 +4,7 @@ import { ArrowUpRight, Grid2X2, Plus, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { INVITE_URL, SUPPORT_URL } from '../home/editorialData';
+import scrollToSection from '../../utils/scrollToSection';
 
 const navLinks = [
   { name: 'Home', to: '/', target: '#home' },
@@ -44,8 +45,7 @@ function Navigation() {
     setIsOpen(false);
     if (!target || location.pathname !== '/' || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    if (target === '#home') window.scrollTo({ top: 0, behavior: reducedMotion ? 'instant' : 'smooth' });
-    else document.querySelector(target)?.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth' });
+    scrollToSection(target);
   };
 
   return (

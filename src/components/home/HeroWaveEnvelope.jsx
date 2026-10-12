@@ -10,11 +10,12 @@ void main() {
 
 const fragmentShader = `
 uniform float waveTime;
+uniform float waveSpread;
 varying vec2 waveUv;
 void main() {
   float x = waveUv.x;
   float y = waveUv.y;
-  float crest = 0.29 + 0.15 * sin(x * 7.0 + waveTime)
+  float crest = 0.29 + waveSpread * 1.15 + 0.15 * sin(x * 7.0 + waveTime)
     + 0.055 * sin(x * 12.0 - waveTime * 0.65);
   float wave = 1.0 - smoothstep(crest - 0.09, crest + 0.14, y);
   float baseGlow = exp(-y * 15.0);
@@ -26,10 +27,14 @@ void main() {
   gl_FragColor = vec4(tint * wave * 0.5 / max(alpha, 0.001), alpha);
 }`;
 
-export default function HeroWaveEnvelope({ animate }) {
+export default function HeroWaveEnvelope({ animate, spread }) {
   const materialRef = useRef(null);
-  const uniforms = useMemo(() => ({ waveTime: { value: 0.75 } }), []);
+  const uniforms = useMemo(() => ({ waveTime: { value: 0.75 }, waveSpread: { value: 0 } }), []);
   useFrame((_, delta) => {
+    if (materialRef.current) {
+      // Read scroll directly into the GPU uniform without re-rendering React.
+      materialRef.current.uniforms.waveSpread.value = Math.max(0, Math.min(1, spread?.get() ?? 0));
+    }
     if (animate && materialRef.current) {
       materialRef.current.uniforms.waveTime.value += Math.min(delta, 0.05) * 0.18;
     }

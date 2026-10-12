@@ -7,7 +7,7 @@ const Premium = lazy(() => import('./pages/Premium'));
 const Docs = lazy(() => import('./pages/Docs'));
 
 function RouteFallback() {
-  return <div className="min-h-screen bg-[#050505]" aria-hidden="true" />;
+  return <div className="min-h-screen bg-[#fffdfd]" aria-hidden="true" />;
 }
 
 function App() {

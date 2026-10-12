@@ -446,7 +446,7 @@
   letter-spacing: 0;
 }
 .studio-nav > * { pointer-events: auto; }
-.studio-nav-brand { display: inline-flex; align-items: center; gap: 6px; width: fit-content; min-height: 56px; color: white; font-size: 24px; font-weight: 800; }
+.studio-nav-brand { display: inline-flex; align-items: center; gap: 6px; width: fit-content; min-height: 56px; padding: 0 12px; border-radius: 4px; background: #080808ed; color: white; font-size: 24px; font-weight: 800; }
 .studio-nav-brand img { object-fit: contain; }
 .studio-menu { border-radius: 20px; background: #121212; box-shadow: 0 12px 36px #00000020; overflow: hidden; }
 .studio-menu-toggle { width: 100%; min-height: 60px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 18px; font-size: 16px; font-weight: 600; color: white; cursor: pointer; }

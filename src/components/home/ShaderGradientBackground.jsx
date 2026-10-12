@@ -36,6 +36,26 @@ class ShaderErrorBoundary extends Component {
 }
 
 const shaderGradientPresets = {
+  pastel: {
+    type: 'waterPlane',
+    color1: '#f8b7cf',
+    color2: '#c9e5f7',
+    color3: '#e0f3dc',
+    positionX: 0,
+    positionY: 0,
+    rotationZ: 210,
+    brightness: 1.15,
+    uSpeed: 0.08,
+    uStrength: 1.8,
+    uDensity: 1.3,
+    uFrequency: 1.7,
+    uAmplitude: 0.08,
+    reflection: 0.08,
+    grain: 'off',
+    cDistance: 4,
+    cameraZoom: 1.1,
+    fallback: 'shader-fallback-pastel',
+  },
   hero: {
     color1: '#050505',
     color2: '#7f0000',
@@ -160,6 +180,7 @@ const baseShaderProps = {
 };
 
 const intensityClasses = {
+  pastel: 'opacity-80',
   soft: 'opacity-45',
   quiet: 'opacity-[0.34]',
   barely: 'opacity-25',
@@ -180,6 +201,7 @@ export default function ShaderGradientBackground({
   priority = false,
   variant = 'hero',
   staticOnly = false,
+  spread,
 }) {
   const containerRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
@@ -188,6 +210,13 @@ export default function ShaderGradientBackground({
   const [isVisible, setIsVisible] = useState(priority);
   const [pixelDensity, setPixelDensity] = useState(0.42);
   const [shaderComponents, setShaderComponents] = useState(null);
+  const [pageVisible, setPageVisible] = useState(true);
+
+  useEffect(() => {
+    const update = () => setPageVisible(!document.hidden);
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
 
   const preset = shaderGradientPresets[variant] || shaderGradientPresets.hero;
   const fallbackClass = fallback ? preset.fallback || 'shader-fallback-hero' : '';
@@ -260,7 +289,7 @@ export default function ShaderGradientBackground({
   );
   const shaderProps = { ...baseShaderProps, ...presetShader };
   const opacityClass = intensityClasses[intensity] || intensityClasses.quiet;
-  const shouldAnimate = isVisible && !prefersReducedMotion && !staticOnly;
+  const shouldAnimate = isVisible && pageVisible && !prefersReducedMotion && !staticOnly;
   const showShader = !staticOnly && webglReady && ShaderGradientCanvas && ShaderGradient;
 
   return (
@@ -284,7 +313,7 @@ export default function ShaderGradientBackground({
               {...shaderProps}
               animate={shouldAnimate ? 'on' : 'off'}
             />
-            {HeroWaveEnvelope && <HeroWaveEnvelope animate={shouldAnimate} />}
+            {HeroWaveEnvelope && <HeroWaveEnvelope animate={shouldAnimate} spread={spread} />}
           </ShaderGradientCanvas>
         </ShaderErrorBoundary>
       )}
