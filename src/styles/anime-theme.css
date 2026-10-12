@@ -30,7 +30,7 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .studio-nav-invite:hover { background:#bd1739; }
 .idol-home { margin-top:-96px; }
 .idol-hero { position:relative; height:calc(100svh - 38px); min-height:730px; max-height:1100px; overflow:hidden; background:#fffafc20; color:var(--idol-ink); isolation:isolate; }
-.idol-hero-art { position:absolute; right:1%; bottom:-24px; width:53%; height:calc(100% - 115px); object-fit:contain; object-position:center bottom; z-index:-1; }
+.idol-hero-art { position:absolute; right:-2.5%; bottom:calc(-20% - 24px); width:60%; height:calc(120% - 115px); object-fit:contain; object-position:center bottom; z-index:-1; }
 .idol-hero-shade { position:absolute; inset:0; z-index:-2; background:linear-gradient(0deg,rgba(44,15,29,.85),rgba(52,17,37,.1) 62%,rgba(255,255,255,.1)); }
 .idol-hero-top { position:absolute; inset:112px 5% auto; display:flex; justify-content:space-between; font-size:11px; font-weight:700; color:var(--idol-muted); }
 .idol-hero-top>span { display:flex; gap:10px; align-items:center; }
