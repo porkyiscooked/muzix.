@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { animate, createScope, stagger } from 'animejs';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, AudioLines, Check, Copy, Heart, Headphones, Star } from 'lucide-react';
@@ -76,6 +77,26 @@ export default function AnimeHome() {
     <section className="idol-commands idol-section" id="features"><div className="idol-section-heading"><Reveal><p className="idol-label">03 / THE SETLIST</p><h2>Small commands.<br /><em>Big feelings.</em></h2></Reveal><p>From your first track to the encore.<br />Everything you need, right inside Discord.</p></div><div className="idol-command-grid">{featureSpecimens.map((item, index) => <CommandCard key={item.command} item={item} index={index} />)}</div></section>
 
     <WeightChartFeatures />
+    <section className="idol-premium-duo idol-section" aria-labelledby="premium-duo-title">
+      <Reveal className="idol-section-heading">
+        <div><p className="idol-label">MEET THE PREMIUM DUO</p><h2 id="premium-duo-title">Two more reasons<br />to <em>press play.</em></h2></div>
+        <Link className="idol-link" to="/premium">Explore premium <ArrowUpRight size={18} /></Link>
+      </Reveal>
+      <div className="idol-duo-grid">
+        <Reveal>
+          <figure className="idol-duo-character mint">
+            <img src="/images/muzix-2-green.webp" alt="Muzix 2 wearing green Muzix headphones, holding a mint record and touching her earcup" width="700" height="1050" loading="lazy" decoding="async" />
+            <figcaption><span>Muzix 2</span><span>Premium</span></figcaption>
+          </figure>
+        </Reveal>
+        <Reveal>
+          <figure className="idol-duo-character blue">
+            <img src="/images/muzix-3-blue.webp" alt="Muzix 3 wearing blue Muzix headphones, holding a microphone and making a peace sign" width="700" height="1050" loading="lazy" decoding="async" />
+            <figcaption><span>Muzix 3</span><span>Premium</span></figcaption>
+          </figure>
+        </Reveal>
+      </div>
+    </section>
     <MiduTestimonials />
     <CreatorChapter />
 
