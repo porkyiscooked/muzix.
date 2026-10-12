@@ -29,23 +29,23 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .studio-nav-invite { background:var(--idol-red); color:white; border-radius:8px; }
 .studio-nav-invite:hover { background:#bd1739; }
 .idol-home { margin-top:-96px; }
-.idol-hero { position:relative; height:calc(100svh - 38px); min-height:730px; max-height:1100px; overflow:hidden; background:transparent; color:white; isolation:isolate; }
-.idol-hero-art { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:62% center; z-index:-3; opacity:.93; }
+.idol-hero { position:relative; height:calc(100svh - 38px); min-height:730px; max-height:1100px; overflow:hidden; background:#fffafc20; color:var(--idol-ink); isolation:isolate; }
+.idol-hero-art { position:absolute; right:1%; bottom:-24px; width:53%; height:calc(100% - 115px); object-fit:contain; object-position:center bottom; z-index:-1; }
 .idol-hero-shade { position:absolute; inset:0; z-index:-2; background:linear-gradient(0deg,rgba(44,15,29,.85),rgba(52,17,37,.1) 62%,rgba(255,255,255,.1)); }
-.idol-hero-top { position:absolute; inset:112px 4% auto; display:flex; justify-content:space-between; font-size:11px; font-weight:700; text-shadow:0 1px 8px #291a2c; }
+.idol-hero-top { position:absolute; inset:112px 5% auto; display:flex; justify-content:space-between; font-size:11px; font-weight:700; color:var(--idol-muted); }
 .idol-hero-top>span { display:flex; gap:10px; align-items:center; }
-.live-dot { width:7px; height:7px; background:#fff; border-radius:50%; }
-.idol-hero-copy { position:absolute; left:5%; bottom:65px; }
+.live-dot { width:7px; height:7px; background:var(--idol-red); border-radius:50%; }
+.idol-hero-copy { position:absolute; left:5%; top:50%; transform:translateY(-35%); width:47%; }
 .idol-hero-stamp { display:flex; align-items:center; gap:10px; font-size:14px; }
-.idol-hero h1 { font-size:180px; line-height:1.04; font-weight:850; margin:8px 0 10px; display:flex; align-items:start; }
+.idol-hero h1 { font-size:140px; line-height:1.04; font-weight:850; margin:8px 0 10px; display:flex; align-items:start; color:var(--idol-red); }
 .idol-title-letter { display:inline-block; }
-.idol-hero h1 .title-star { font-size:100px; color:#ffc4d0; }
+.idol-hero h1 .title-star { font-size:74px; color:#a2748d; }
 .idol-hero-copy>p { font-size:23px; line-height:1.45; margin:0 0 25px; }
 .idol-actions { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
 .idol-button { min-height:52px; display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:14px 21px; font-size:14px; font-weight:700; background:var(--idol-red); color:white; border:1px solid var(--idol-red); border-radius:6px; transition:transform .25s,background .25s; }
 .idol-button:hover { transform:translateY(-3px); background:#bb163a; }
 .idol-button.secondary { background:#fff; color:var(--idol-ink); border-color:white; }
-.idol-scroll { position:absolute; right:4%; bottom:66px; width:48px; height:48px; border:1px solid #ffffff90; border-radius:50%; display:grid; place-items:center; }
+.idol-scroll { position:absolute; right:4%; bottom:66px; width:48px; height:48px; border:1px solid #c5a8b8; background:#fff9fccc; border-radius:50%; display:grid; place-items:center; }
 .hero-issue { position:absolute; right:4%; bottom:22px; font-size:10px; }
 .idol-ribbon { position:relative; overflow:hidden; padding:22px 0; background:var(--idol-blue); color:#3d627e; font-size:13px; font-weight:750; border-bottom:1px solid #d9e7f3; }
 .idol-ribbon-track { display:flex; width:max-content; animation:idol-ribbon-drift 32s linear infinite; }
@@ -112,12 +112,12 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .creator-signature span { font:12px Arial,sans-serif; }
 .creator-bottom>div>p { font-size:18px; line-height:1.85; color:var(--idol-muted); }
 .story-text-link { display:inline-flex; align-items:center; gap:20px; margin-top:20px; border-bottom:1px solid; padding-bottom:7px; font-size:14px; }
-.idol-finale { position:relative; min-height:650px; isolation:isolate; overflow:hidden; color:white; }
-.idol-finale>img { position:absolute; width:100%; height:100%; object-fit:cover; object-position:65% center; z-index:-2; }
-.idol-finale:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#311020cc,#31102022); z-index:-1; }
-.idol-finale-copy { padding:90px 5%; max-width:820px; }
-.idol-finale .idol-label { color:#fff; }
-.idol-finale h2 em { color:#ffc1d1; }
+.idol-finale { position:relative; min-height:690px; isolation:isolate; overflow:hidden; color:var(--idol-ink); background:#f4faff60; }
+.idol-finale>img { position:absolute; right:1%; bottom:0; width:49%; height:94%; object-fit:contain; object-position:center bottom; z-index:-1; }
+.idol-finale-copy { padding:90px 5%; width:55%; }
+.idol-finale .idol-label { color:var(--idol-red); }
+.idol-finale h2 { font-size:52px; }
+.idol-finale h2 em { color:var(--idol-red); }
 .idol-finale-copy p:not(.idol-label) { font-size:18px; max-width:440px; margin:25px 0; }
 .idol-footer { padding:65px 5% 22px; background:#ffeff3; color:var(--idol-ink); overflow:hidden; }
 .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:35px; }
@@ -175,21 +175,21 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
 .idol-docs .docs-copy h3, .idol-docs .docs-copy strong { color:var(--idol-ink); }
 .idol-docs .docs-copy h3 { font-size:24px; line-height:1.3; }
 .idol-docs .docs-copy code { background:#fce3eb; color:#b1173c; }
-@media(min-width:1600px) { .idol-hero h1 { font-size:220px; } .footer-wordmark { font-size:300px; } }
+@media(min-width:1600px) { .idol-hero h1 { font-size:176px; } .footer-wordmark { font-size:300px; } }
 @media(min-width:1024px) and (max-width:1279px) { .idol-premium .flex.flex-col.gap-4 { display:grid; grid-template-columns:1fr 1fr; } }
-@media(max-width:1100px) { .idol-hero h1 { font-size:130px; } .idol-home h2 { font-size:46px; } .idol-command-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .idol-intro { gap:5%; } .idol-guide { gap:5%; } .idol-tabs { gap:10px; } .idol-tabs button { font-size:11px; } .idol-premium article { min-width:0; } .footer-wordmark { font-size:180px; } }
+@media(max-width:1100px) { .idol-hero h1 { font-size:92px; } .idol-hero h1 .title-star { font-size:48px; } .idol-home h2 { font-size:46px; } .idol-command-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .idol-intro { gap:5%; } .idol-guide { gap:5%; } .idol-tabs { gap:10px; } .idol-tabs button { font-size:11px; } .idol-premium article { min-width:0; } .footer-wordmark { font-size:180px; } }
 @media(max-width:767px) {
   .studio-nav { inset:12px 14px auto; grid-template-columns:1fr 82px 1fr; gap:7px; }
   .studio-nav-brand { padding:0 8px; font-size:19px; gap:4px; }
   .studio-menu, .studio-menu-panel, .studio-nav-invite { border-radius:8px; }
   .studio-menu-panel { background:white; }
-  .idol-hero { min-height:740px; max-height:900px; height:calc(100svh - 30px); }
-  .idol-hero-art { object-position:64% center; }
+  .idol-hero { min-height:990px; max-height:none; height:auto; }
+  .idol-hero-art { right:0; bottom:-10px; width:100%; height:530px; }
   .idol-hero-top { top:92px; font-size:9px; }
   .idol-hero-top>span:last-child { display:none; }
   .idol-love-note { top:135px; right:6%; padding:10px; font-size:10px; gap:7px; }
   .idol-love-note>svg:last-child { display:none; }
-  .idol-hero-copy { left:6%; right:6%; bottom:74px; }
+  .idol-hero-copy { position:relative; left:auto; top:auto; width:auto; transform:none; padding:155px 6% 0; }
   .idol-hero h1 { font-size:88px; margin-top:12px; }
   .idol-hero h1 .title-star { font-size:48px; }
   .idol-hero-copy>p { font-size:19px; }
@@ -218,9 +218,9 @@ body { background:var(--idol-paper); color:var(--idol-ink); }
   .idol-command p { font-size:13px; }
   .idol-home .story-community h2 { font-size:36px; }
   .strength-row h3 { font-size:23px; }
-  .idol-finale { min-height:600px; }
-  .idol-finale-copy { padding:70px 6%; }
-  .idol-finale:after { background:#30122980; }
+  .idol-finale { min-height:0; display:flex; flex-direction:column; }
+  .idol-finale-copy { padding:65px 6% 15px; width:100%; order:0; }
+  .idol-finale>img { position:relative; right:auto; bottom:auto; width:min(100%,500px); height:auto; align-self:center; order:1; z-index:auto; }
   .footer-top { grid-template-columns:1fr 1fr; gap:28px; }
   .idol-footer { padding:45px 6% 20px; }
   .footer-top nav a { font-size:13px; }

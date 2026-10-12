@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, createScope, stagger } from 'animejs';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, AudioLines, Check, Copy, Heart, Headphones, Sparkles, Star } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, AudioLines, Check, Copy, Heart, Headphones, Star } from 'lucide-react';
 import { INVITE_URL, WEBPLAYER_URL, SUPPORT_URL, featureSpecimens, soundAttractions } from './editorialData';
 import WeightChartFeatures from './WeightChartFeatures';
 import MiduTestimonials from './MiduTestimonials';
@@ -57,9 +57,7 @@ export default function AnimeHome() {
 
   return <div className="idol-home" ref={root}>
     <section id="home" className="idol-hero" ref={hero}>
-      <motion.img className="idol-hero-art" src="/images/muzix-idol-concert.webp" alt="Muzix's silver-haired anime idol performing on a pink concert stage" fetchPriority="high" width="2048" height="768" style={reduced ? undefined : { y: imageY }} />
-      <div className="idol-hero-shade" />
-      <div className="idol-love-note" aria-hidden="true"><Heart size={18} /><span>Your daily dose<br />of happy.</span><Sparkles size={16} /></div>
+      <motion.img className="idol-hero-art" src="/images/muzix-hero-wave.webp" alt="Muzix waving hello while listening through her headphones" fetchPriority="high" width="900" height="1350" style={reduced ? undefined : { y: imageY }} />
       <div className="idol-hero-top"><span><span className="live-dot" /> YOUR DISCORD MUSIC BOT</span><span>EST. IN YOUR VOICE CHANNEL <Star size={14} /></span></div>
       <div className="idol-hero-copy"><div className="idol-hero-stamp"><AudioLines size={19} /> Music lives closer to you.</div><h1 aria-label="Muzix">{'MUZIX'.split('').map((letter, index) => <span className="idol-title-letter" aria-hidden="true" key={index}>{letter}</span>)}<span className="title-star" aria-hidden="true">*</span></h1><p>Your server. Your soundtrack.<br />A little more music. A lot more together.</p><IdolActions /></div>
       <button className="idol-scroll" onClick={() => scrollToSection('#about')} aria-label="Explore Muzix"><ArrowDown size={21} /></button>
@@ -81,6 +79,6 @@ export default function AnimeHome() {
     <MiduTestimonials />
     <CreatorChapter />
 
-    <section className="idol-finale" id="timeline"><img src="/images/muzix-idol-concert.webp" alt="The Muzix idol reaching out to the concert audience" width="2048" height="768" loading="lazy" /><div className="idol-finale-copy"><Reveal><p className="idol-label">ONE MORE SONG?</p><h2>Your friends.<br />Your favourite songs.<br /><em>Your Muzix.</em></h2><p>Invite Muzix and turn your Discord server into a shared music room.</p><IdolActions /></Reveal></div></section>
+    <section className="idol-finale" id="timeline"><img src="/images/muzix-logo-hug.webp" alt="Muzix hugging a plush Muzix logo with a pastel blue record beside her" width="1100" height="1100" loading="lazy" /><div className="idol-finale-copy"><Reveal><p className="idol-label">ONE MORE SONG?</p><h2>Your friends.<br />Your favourite songs.<br /><em>Your Muzix.</em></h2><p>Invite Muzix and turn your Discord server into a shared music room.</p><IdolActions /></Reveal></div></section>
   </div>;
 }
