@@ -51,12 +51,12 @@ export default function CTA() {
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://discord.com/invite/TVR4efd8ts"
+                href="https://discord.gg/hollowhearts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-8 py-4 md:px-12 md:py-5 bg-white/5 border border-white/10 text-white font-black text-lg md:text-xl rounded-2xl hover:bg-white/10 transition-colors w-full sm:w-auto"
               >
-                <span>Support Server</span>
+                <span>Hollow Hearts</span>
               </motion.a>
             </div>
           </motion.div>

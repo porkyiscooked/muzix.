@@ -69,7 +69,7 @@ export default function MiduTestimonials() {
             rel="noopener noreferrer"
             className="inline-flex min-h-12 items-center justify-center border border-white/24 px-6 py-3 text-sm font-black uppercase text-white transition-colors hover:border-accent-primary hover:text-accent-primary"
           >
-            Join support server
+            Join Hollow Hearts
           </a>
         </div>
       </div>

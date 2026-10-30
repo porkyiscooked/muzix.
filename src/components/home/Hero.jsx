@@ -88,12 +88,12 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://discord.com/invite/TVR4efd8ts"
+              href="https://discord.gg/hollowhearts"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-colors"
             >
-              <span>Support Server</span>
+              <span>Hollow Hearts</span>
             </motion.a>
           </motion.div>
 

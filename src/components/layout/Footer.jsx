@@ -8,7 +8,7 @@ import scrollToSection from '../../utils/scrollToSection';
 const columns = [
   { title: 'Explore', links: [['Home', '/', '#home'], ['About', '/', '#about'], ['Sound guide', '/', '#sound-guide'], ['Commands', '/', '#features'], ['Premium', '/premium'], ['Docs', '/docs']] },
   { title: 'The setlist', links: [['High-quality playback', '/', '#sound-guide'], ['Smart queue', '/', '#overlap'], ['Audio filters', '/', '#features'], ['Lyrics', '/', '#features'], ['Autoplay', '/', '#timeline']] },
-  { title: 'Stay close', links: [['Support Server', SUPPORT_URL], ['Vote on Top.gg', 'https://top.gg/bot/1328272164423729233/vote'], ['Invite Bot', INVITE_URL]] },
+  { title: 'Stay close', links: [['Hollow Hearts', SUPPORT_URL], ['Vote on Top.gg', 'https://top.gg/bot/1328272164423729233/vote'], ['Invite Bot', INVITE_URL]] },
 ];
 
 export default function Footer() {

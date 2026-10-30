@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Bot, ExternalLink, Headphones, SkipBack } from 'lucide-react';
 
 const inviteUrl = 'https://discord.com/oauth2/authorize?client_id=1328272164423729233&permissions=281474980236288&integration_type=0&scope=bot+applications.commands';
-const supportUrl = 'https://discord.com/invite/TVR4efd8ts';
+const supportUrl = 'https://discord.gg/hollowhearts';
 const webplayerUrl = 'https://muzix-webplayer.com/';
 
 export default function GlassCTA() {
@@ -54,11 +54,11 @@ export default function GlassCTA() {
             href={supportUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Join the Muzix support server"
+            aria-label="Join Hollow Hearts support server"
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border border-white/12 bg-white/[0.045] px-7 py-4 text-sm font-black uppercase text-white/82 backdrop-blur-xl transition-transform hover:scale-[1.02] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             <Headphones size={19} />
-            Support Server
+            Hollow Hearts
           </a>
         </div>
       </motion.div>

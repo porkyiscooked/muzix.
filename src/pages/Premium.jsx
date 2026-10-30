@@ -1,50 +1,37 @@
-import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Check, Headphones } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight, Check, Headphones, Ticket } from 'lucide-react';
 import useSimpleScrollMotion from '../hooks/useSimpleScrollMotion';
+import { SUPPORT_URL } from '../components/home/editorialData';
 
-const pricingPlans = [
+const durations = ['Weekly', 'Monthly', 'Yearly', 'Lifetime'];
+const packages = [
   {
-    name: 'Weekly',
-    desc: 'Perfect for a weekend event.',
-    prices: { usd: { old: '1.99', new: '0.49' }, eur: { old: '1.89', new: '0.45' }, inr: { old: '99', new: '29' } },
-    period: '/wk',
-    features: ['7 Days of No-Prefix Commands', 'Server-wide Activation'],
-    btnText: 'Choose Weekly',
+    id: 'auxiliary',
+    name: 'Muzix 2 + Muzix 3 Package',
+    description: 'Unlock premium features for both Muzix 2 and Muzix 3 auxiliary bots.',
+    features: ['Muzix 2 premium', 'Muzix 3 premium', 'User-based access'],
+    inr: ['29', '99', '999', '2,499'],
+    usd: ['0.35', '1.19', '11.99', '29.99'],
   },
   {
-    name: 'Monthly',
-    desc: 'Consistent vibes all month long.',
-    prices: { usd: { old: '3.99', new: '1.49' }, eur: { old: '3.49', new: '1.29' }, inr: { old: '249', new: '89' } },
-    period: '/mo',
-    features: ['30 Days of No-Prefix Commands', 'Server-wide Activation', 'Discord Supporter Role'],
-    btnText: 'Choose Monthly',
-    badge: 'Most Popular',
-    featured: true,
+    id: 'no-prefix',
+    name: 'No Prefix Package',
+    description: 'Use all commands without needing any prefix.',
+    features: ['No-prefix commands', 'User-based access'],
+    inr: ['19', '69', '699', '1,499'],
+    usd: ['0.23', '0.83', '8.37', '17.95'],
   },
   {
-    name: 'Yearly',
-    desc: 'Lock in seamless commands for less.',
-    prices: { usd: { old: '24.99', new: '9.99' }, eur: { old: '22.99', new: '8.99' }, inr: { old: '1999', new: '699' } },
-    period: '/yr',
-    features: ['1 Year of No-Prefix Commands', 'Server-wide Activation', 'Discord Supporter Role'],
-    btnText: 'Choose Yearly',
-  },
-  {
-    name: 'Lifetime',
-    desc: 'Pay once. Vibe forever.',
-    prices: { usd: { old: '59.99', new: '19.99' }, eur: { old: '54.99', new: '17.99' }, inr: { old: '4999', new: '1499' } },
-    period: '/once',
-    features: ['Permanent No-Prefix Access', 'Server-wide Activation', 'Exclusive Macabre Discord Role'],
-    btnText: 'Unlock Lifetime',
-    badge: 'Limited Slots',
+    id: 'combined',
+    name: 'Combined Package',
+    description: 'Muzix 2 + Muzix 3 + No Prefix. Get both auxiliary bots premium and the No Prefix package together.',
+    features: ['Muzix 2 premium', 'Muzix 3 premium', 'No-prefix commands', 'User-based access'],
+    inr: ['39', '149', '1,499', '3,499'],
+    usd: ['0.47', '1.79', '17.95', '41.90'],
   },
 ];
 
-const symbols = { usd: '$', eur: 'EUR ', inr: 'INR ' };
-
 export default function Premium() {
-  const [currency, setCurrency] = useState('usd');
   const reducedMotion = useReducedMotion();
   const simpleScrollMotion = useSimpleScrollMotion();
   const stableMotion = reducedMotion || simpleScrollMotion;
@@ -52,111 +39,61 @@ export default function Premium() {
   return (
     <section className="idol-subpage idol-premium relative -mt-24 min-h-screen overflow-hidden px-5 pb-20 pt-36 sm:px-8 md:px-10 md:pt-40">
       <div className="subpage-art" aria-hidden="true"><img src="/images/muzix-idol-concert.webp" alt="" /></div>
-
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid gap-10 border-y border-[#f4f1ea]/15 py-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
-          <div>
-            <div className="mb-8 flex items-center gap-4">
-              <img src="/images/muzix_new.png" alt="" className="h-12 w-12 object-contain" />
-              <p className="editorial-label text-xs uppercase text-accent-primary/78">P R E M I U M&nbsp;&nbsp; A C C E S S</p>
+        <header className="premium-intro">
+          <p className="idol-label">PREMIUM ACCESS</p>
+          <h1>Your backstage pass.</h1>
+          <p>Meet Muzix 2 and Muzix 3, skip the prefix, or bring everything together in one package.</p>
+          <div className="premium-account-note"><Check size={18} aria-hidden="true" /><strong>Premium is user-based, not server-wide.</strong> Access is linked to your Discord account.</div>
+          <a href="#how-to-buy" className="idol-link">How to buy <ArrowUpRight size={17} aria-hidden="true" /></a>
+        </header>
+
+        {packages.map((pack) => (
+          <section key={pack.id} className="premium-package" aria-labelledby={`package-${pack.id}`}>
+            <div className="premium-package-heading">
+              <div>
+                <h2 id={`package-${pack.id}`}>{pack.name}</h2>
+                <p>{pack.description}</p>
+              </div>
+              {pack.id === 'auxiliary' && <div className="premium-bot-duo">
+                <figure><img src="/images/muzix-2-green.webp" alt="Muzix 2 with green headphones" width="700" height="1050" loading="lazy" /><figcaption>Muzix 2</figcaption></figure>
+                <figure><img src="/images/muzix-3-blue.webp" alt="Muzix 3 with blue headphones" width="700" height="1050" loading="lazy" /><figcaption>Muzix 3</figcaption></figure>
+              </div>}
             </div>
-            <h1 className="editorial-display text-6xl font-black uppercase leading-[0.86] tracking-normal sm:text-7xl md:text-9xl">
-              Your backstage pass.
-            </h1>
-          </div>
+            <ul className="premium-inclusions">{pack.features.map(feature => <li key={feature}><Check size={16} aria-hidden="true" />{feature}</li>)}</ul>
+            <div className="premium-price-grid">
+              {durations.map((duration, index) => (
+                <motion.article
+                  key={duration}
+                  initial={stableMotion ? false : { opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: stableMotion ? 0 : 0.35, delay: stableMotion ? 0 : index * 0.05 }}
+                  className={pack.id === 'combined' ? 'premium-price-card z-20' : 'premium-price-card'}
+                >
+                  <h3>{duration}</h3>
+                  <p className="premium-price">{'\u20B9'}{pack.inr[index]}</p>
+                  <p className="premium-usd">Approx. ${pack.usd[index]} USD</p>
+                  <a href={SUPPORT_URL} target="_blank" rel="noreferrer" aria-label={`Buy ${pack.name}, ${duration}, through a Hollow Hearts ticket`}>
+                    <Ticket size={16} aria-hidden="true" />Buy {duration}<ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                </motion.article>
+              ))}
+            </div>
+          </section>
+        ))}
+        <p className="premium-price-note">USD amounts are approximate. Confirm the payment amount and method with the team in your ticket.</p>
 
-          <p className="max-w-2xl text-2xl font-semibold leading-10 text-[#f4f1ea]/76 md:text-3xl md:leading-[3rem] lg:justify-self-end">
-            Drop the prefix and make Muzix feel faster in every server. Premium keeps commands seamless for events, voice rooms, and everyday listening.
-          </p>
-        </div>
-
-        <div className="my-12 flex flex-wrap items-center gap-2 border-b border-[#f4f1ea]/12 pb-8">
-          {['usd', 'eur', 'inr'].map((code) => (
-            <button
-              key={code}
-              type="button"
-              onClick={() => setCurrency(code)}
-              aria-pressed={currency === code}
-              className={`min-h-11 border px-6 py-2 text-sm font-black uppercase transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-primary ${
-                currency === code
-                  ? 'border-accent-primary bg-accent-primary text-white'
-                  : 'border-[#f4f1ea]/18 text-[#f4f1ea]/62 hover:border-[#f4f1ea] hover:text-white'
-              }`}
-            >
-              {code}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
-          {pricingPlans.map((plan, index) => (
-            <motion.article
-              key={plan.name}
-              initial={stableMotion ? false : { opacity: 0, y: 28 }}
-              animate={stableMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={stableMotion ? undefined : { delay: index * 0.06 }}
-              style={stableMotion ? { opacity: 1, y: 0 } : undefined}
-              className={`relative flex min-h-[34rem] flex-1 flex-col border p-7 transition-transform duration-300 hover:-translate-y-2 lg:p-9 xl:p-10 ${
-                plan.featured
-                  ? 'z-20 border-accent-primary bg-[linear-gradient(145deg,#ff3b30_0%,#120303_58%,#050505_100%)] text-white shadow-[0_32px_90px_rgba(255,59,48,0.22)]'
-                  : 'z-10 border-[#f4f1ea]/16 bg-[#0d0d0d] text-[#f4f1ea]'
-              }`}
-            >
-              {plan.badge && (
-                <span className="mb-6 w-fit border border-current/25 px-3 py-2 text-xs font-black uppercase opacity-80">
-                  {plan.badge}
-                </span>
-              )}
-
-              <div className="mb-8">
-                <h2 className="editorial-display text-5xl font-black uppercase leading-none tracking-normal">{plan.name}</h2>
-                <p className="mt-4 text-lg leading-8 opacity-68">{plan.desc}</p>
-              </div>
-
-              <div className="border-y border-current/16 py-6">
-                <div className="flex items-center gap-3">
-                  <s className="text-xl font-semibold opacity-42">
-                    <AnimatePresence mode="wait">
-                      <motion.span key={`old-${currency}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        {symbols[currency]}{plan.prices[currency].old}
-                      </motion.span>
-                    </AnimatePresence>
-                  </s>
-                  <span className="border border-current/25 px-2 py-1 text-xs font-black uppercase">Sale</span>
-                </div>
-                <div className="mt-3 flex items-end gap-2">
-                  <span className="pb-2 text-2xl font-bold opacity-62">{symbols[currency]}</span>
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={`new-${currency}`}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -12 }}
-                      className="editorial-display text-7xl font-black leading-none tracking-normal"
-                    >
-                      {plan.prices[currency].new}
-                    </motion.span>
-                  </AnimatePresence>
-                  <span className="pb-2 text-xl font-semibold opacity-56">{plan.period}</span>
-                </div>
-              </div>
-
-              <ul className="my-8 flex flex-col gap-4">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 text-lg leading-7 opacity-78">
-                    <Check size={18} className="mt-1 shrink-0 text-accent-primary" aria-hidden="true" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a href="https://discord.com/invite/TVR4efd8ts" target="_blank" rel="noreferrer" className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 border border-current bg-white px-5 py-3 text-sm font-black uppercase text-[#050505] transition-colors hover:bg-accent-primary hover:text-white">
-                <Headphones size={17} aria-hidden="true" />
-                {plan.btnText}
-              </a>
-            </motion.article>
-          ))}
-        </div>
+        <section id="how-to-buy" className="premium-purchase" aria-labelledby="purchase-title">
+          <p className="idol-label">YOUR NEXT STEP</p>
+          <h2 id="purchase-title">A ticket to your next favourite song.</h2>
+          <ol>
+            <li><span>01</span><div><h3>Join Hollow Hearts</h3><p>Join our Discord community and support server using the button below.</p></div></li>
+            <li><span>02</span><div><h3>Create a purchase ticket</h3><p>Open a ticket in Hollow Hearts. Tell the team which package and duration you want, and the Discord account that should receive access.</p></div></li>
+            <li><span>03</span><div><h3>Complete your purchase</h3><p>Follow the team's payment instructions in your ticket. They will help you activate your user-based premium access.</p></div></li>
+          </ol>
+          <a className="idol-button" href={SUPPORT_URL} target="_blank" rel="noreferrer"><Headphones size={18} aria-hidden="true" />Join Hollow Hearts<ArrowUpRight size={17} aria-hidden="true" /></a>
+        </section>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ export const INVITE_URL =
 
 export const WEBPLAYER_URL = 'https://muzix-webplayer.com/';
 
-export const SUPPORT_URL = 'https://discord.com/invite/TVR4efd8ts';
+export const SUPPORT_URL = 'https://discord.gg/hollowhearts';
 
 export const soundTags = [
   'High-quality playback',

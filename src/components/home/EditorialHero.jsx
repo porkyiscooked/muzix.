@@ -117,7 +117,7 @@ export default function EditorialHero() {
               className="mt-5 inline-flex items-center gap-2 text-sm uppercase text-[#f4f1ea]/58 transition-colors hover:text-[#f4f1ea] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-primary"
             >
               <MessageCircle size={16} aria-hidden="true" />
-              Support Server
+              Hollow Hearts
             </a>
           </motion.aside>
         </div>

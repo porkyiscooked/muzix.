@@ -69,7 +69,7 @@ function Navigation() {
                     <Link to={link.to} state={link.target ? { scrollTarget: link.target } : undefined} onClick={(event) => handleSectionClick(event, link.target)} aria-current={!link.target && location.pathname === link.to ? 'page' : undefined}>{link.name}<ArrowUpRight size={18} aria-hidden="true" /></Link>
                   </motion.div>
                 ))}
-                <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="studio-menu-support" onClick={() => setIsOpen(false)}>Support Server <ArrowUpRight size={15} aria-hidden="true" /></a>
+                <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="studio-menu-support" onClick={() => setIsOpen(false)}>Hollow Hearts <ArrowUpRight size={15} aria-hidden="true" /></a>
               </div>
             </motion.nav>
           )}
