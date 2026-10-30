@@ -8,15 +8,15 @@ const packages = [
   {
     id: 'auxiliary',
     name: 'Muzix 2 + Muzix 3 Package',
-    description: 'Unlock premium features for both Muzix 2 and Muzix 3 auxiliary bots.',
-    features: ['Muzix 2 premium', 'Muzix 3 premium', 'User-based access'],
+    description: 'Unlock premium features for both Muzix 2 and Muzix 3 auxiliary bots in your Discord server. Access is server-based.',
+    features: ['Muzix 2 premium', 'Muzix 3 premium', 'Server-based access'],
     inr: ['29', '99', '999', '2,499'],
     usd: ['0.35', '1.19', '11.99', '29.99'],
   },
   {
     id: 'no-prefix',
     name: 'No Prefix Package',
-    description: 'Use all commands without needing any prefix.',
+    description: 'Use all commands without needing any prefix. This standalone package is user-based and applies to your Discord account only.',
     features: ['No-prefix commands', 'User-based access'],
     inr: ['19', '69', '699', '1,499'],
     usd: ['0.23', '0.83', '8.37', '17.95'],
@@ -24,8 +24,8 @@ const packages = [
   {
     id: 'combined',
     name: 'Combined Package',
-    description: 'Muzix 2 + Muzix 3 + No Prefix. Get both auxiliary bots premium and the No Prefix package together.',
-    features: ['Muzix 2 premium', 'Muzix 3 premium', 'No-prefix commands', 'User-based access'],
+    description: 'Get server-based premium for Muzix 2 and Muzix 3, plus No Prefix access for the server owner and all staff members.',
+    features: ['Server-based Muzix 2 + Muzix 3 premium', 'No Prefix for the server owner', 'No Prefix for all staff members'],
     inr: ['39', '149', '1,499', '3,499'],
     usd: ['0.47', '1.79', '17.95', '41.90'],
   },
@@ -44,7 +44,7 @@ export default function Premium() {
           <p className="idol-label">PREMIUM ACCESS</p>
           <h1>Your backstage pass.</h1>
           <p>Meet Muzix 2 and Muzix 3, skip the prefix, or bring everything together in one package.</p>
-          <div className="premium-account-note"><Check size={18} aria-hidden="true" /><strong>Premium is user-based, not server-wide.</strong> Access is linked to your Discord account.</div>
+          <div className="premium-account-note"><Check size={18} aria-hidden="true" /><div><strong>Choose access for your server or your account.</strong> Muzix 2 + Muzix 3 is server-based. Standalone No Prefix is user-based. Combined includes both bots for your server and No Prefix for the server owner and all staff members.</div></div>
           <a href="#how-to-buy" className="idol-link">How to buy <ArrowUpRight size={17} aria-hidden="true" /></a>
         </header>
 
@@ -89,8 +89,8 @@ export default function Premium() {
           <h2 id="purchase-title">A ticket to your next favourite song.</h2>
           <ol>
             <li><span>01</span><div><h3>Join Hollow Hearts</h3><p>Join our Discord community and support server using the button below.</p></div></li>
-            <li><span>02</span><div><h3>Create a purchase ticket</h3><p>Open a ticket in Hollow Hearts. Tell the team which package and duration you want, and the Discord account that should receive access.</p></div></li>
-            <li><span>03</span><div><h3>Complete your purchase</h3><p>Follow the team's payment instructions in your ticket. They will help you activate your user-based premium access.</p></div></li>
+            <li><span>02</span><div><h3>Create a purchase ticket</h3><p>Tell the team your package and duration. For Muzix 2 + Muzix 3, provide your server details. For standalone No Prefix, provide your Discord account. For Combined, include your server and the accounts of its owner and all staff members.</p></div></li>
+            <li><span>03</span><div><h3>Complete your purchase</h3><p>Follow the team's payment instructions in your ticket. They will help activate server-based bot premium, account-based No Prefix, or both according to your package.</p></div></li>
           </ol>
           <a className="idol-button" href={SUPPORT_URL} target="_blank" rel="noreferrer"><Headphones size={18} aria-hidden="true" />Join Hollow Hearts<ArrowUpRight size={17} aria-hidden="true" /></a>
         </section>
