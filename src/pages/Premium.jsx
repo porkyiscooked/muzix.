@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Check, Headphones, Ticket } from 'lucide-react';
 import useSimpleScrollMotion from '../hooks/useSimpleScrollMotion';
@@ -32,9 +34,25 @@ const packages = [
 ];
 
 export default function Premium() {
+  const location = useLocation();
   const reducedMotion = useReducedMotion();
   const simpleScrollMotion = useSimpleScrollMotion();
   const stableMotion = reducedMotion || simpleScrollMotion;
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      window.history.replaceState(window.history.state, '', location.pathname + location.search);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location.hash, location.pathname, location.search]);
+
+  function showPurchaseSteps() {
+    const section = document.getElementById('how-to-buy');
+    section?.focus({ preventScroll: true });
+    section?.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+  }
 
   return (
     <section className="idol-subpage idol-premium relative -mt-24 min-h-screen overflow-hidden px-5 pb-20 pt-36 sm:px-8 md:px-10 md:pt-40">
@@ -45,7 +63,7 @@ export default function Premium() {
           <h1>Your backstage pass.</h1>
           <p>Meet Muzix 2 and Muzix 3, skip the prefix, or bring everything together in one package.</p>
           <div className="premium-account-note"><Check size={18} aria-hidden="true" /><div><strong>Choose access for your server or your account.</strong> Muzix 2 + Muzix 3 is server-based. Standalone No Prefix is user-based. Combined includes both bots for your server and No Prefix for the server owner and all staff members.</div></div>
-          <a href="#how-to-buy" className="idol-link">How to buy <ArrowUpRight size={17} aria-hidden="true" /></a>
+          <button type="button" onClick={showPurchaseSteps} className="idol-link">How to buy <ArrowUpRight size={17} aria-hidden="true" /></button>
         </header>
 
         {packages.map((pack) => (
@@ -84,7 +102,7 @@ export default function Premium() {
         ))}
         <p className="premium-price-note">USD amounts are approximate. Confirm the payment amount and method with the team in your ticket.</p>
 
-        <section id="how-to-buy" className="premium-purchase" aria-labelledby="purchase-title">
+        <section id="how-to-buy" className="premium-purchase" aria-labelledby="purchase-title" tabIndex={-1}>
           <p className="idol-label">YOUR NEXT STEP</p>
           <h2 id="purchase-title">A ticket to your next favourite song.</h2>
           <ol>
