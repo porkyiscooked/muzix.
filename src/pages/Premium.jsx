@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowUpRight, Check, Headphones, Ticket } from 'lucide-react';
+import { ArrowUpRight, Check, Headphones } from 'lucide-react';
 import useSimpleScrollMotion from '../hooks/useSimpleScrollMotion';
 import { SUPPORT_URL } from '../components/home/editorialData';
 
@@ -10,26 +10,9 @@ const packages = [
   {
     id: 'auxiliary',
     name: 'Muzix 2 + Muzix 3 Package',
-    description: 'Unlock premium features for both Muzix 2 and Muzix 3 auxiliary bots in your Discord server. Access is server-based.',
-    features: ['Muzix 2 premium', 'Muzix 3 premium', 'Server-based access'],
-    inr: ['29', '99', '999', '2,499'],
-    usd: ['0.35', '1.19', '11.99', '29.99'],
-  },
-  {
-    id: 'no-prefix',
-    name: 'No Prefix Package',
-    description: 'Use all commands without needing any prefix. This standalone package is user-based and applies to your Discord account only.',
-    features: ['No-prefix commands', 'User-based access'],
-    inr: ['19', '69', '699', '1,499'],
-    usd: ['0.23', '0.83', '8.37', '17.95'],
-  },
-  {
-    id: 'combined',
-    name: 'Combined Package',
-    description: 'Get server-based premium for Muzix 2 and Muzix 3, plus No Prefix access for the server owner and all staff members.',
-    features: ['Server-based Muzix 2 + Muzix 3 premium', 'No Prefix for the server owner', 'No Prefix for all staff members'],
-    inr: ['39', '149', '1,499', '3,499'],
-    usd: ['0.47', '1.79', '17.95', '41.90'],
+    description: 'One package unlocks both auxiliary bots for one Discord server.',
+    features: ['Muzix 2 premium', 'Muzix 3 premium', 'One Discord server'],
+    inr: ['15', '49', '399', '999'],
   },
 ];
 
@@ -61,8 +44,8 @@ export default function Premium() {
         <header className="premium-intro">
           <p className="idol-label">PREMIUM ACCESS</p>
           <h1>Your backstage pass.</h1>
-          <p>Meet Muzix 2 and Muzix 3, skip the prefix, or bring everything together in one package.</p>
-          <div className="premium-account-note"><Check size={18} aria-hidden="true" /><div><strong>Choose access for your server or your account.</strong> Muzix 2 + Muzix 3 is server-based. Standalone No Prefix is user-based. Combined includes both bots for your server and No Prefix for the server owner and all staff members.</div></div>
+          <p>Add Muzix 2 and Muzix 3 to your server with one affordable auxiliary-bot package.</p>
+          <div className="premium-account-note"><Check size={18} aria-hidden="true" /><div><strong>Two bots. One server. One package.</strong> Premium access is server-based and includes both Muzix 2 and Muzix 3.</div></div>
           <button type="button" onClick={showPurchaseSteps} className="idol-link">How to buy <ArrowUpRight size={17} aria-hidden="true" /></button>
         </header>
 
@@ -87,28 +70,28 @@ export default function Premium() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: stableMotion ? 0 : 0.35, delay: stableMotion ? 0 : index * 0.05 }}
-                  className={pack.id === 'combined' ? 'premium-price-card z-20' : 'premium-price-card'}
+                  className={duration === 'Yearly' ? 'premium-price-card z-20' : 'premium-price-card'}
                 >
                   <h3>{duration}</h3>
                   <p className="premium-price">{'\u20B9'}{pack.inr[index]}</p>
-                  <p className="premium-usd">Approx. ${pack.usd[index]} USD</p>
-                  <a href={SUPPORT_URL} target="_blank" rel="noreferrer" aria-label={`Buy ${pack.name}, ${duration}, through a Hollow Hearts ticket`}>
-                    <Ticket size={16} aria-hidden="true" />Buy {duration}<ArrowUpRight size={15} aria-hidden="true" />
+                  {duration === 'Yearly' && <p className="premium-price-note">Save {'\u20B9'}189 versus 12 monthly purchases.</p>}
+                  <a href={SUPPORT_URL} target="_blank" rel="noreferrer" aria-label={`Buy ${pack.name}, ${duration}, by contacting a developer in Hollow Hearts`}>
+                    <Headphones size={16} aria-hidden="true" />Buy {duration}<ArrowUpRight size={15} aria-hidden="true" />
                   </a>
                 </motion.article>
               ))}
             </div>
           </section>
         ))}
-        <p className="premium-price-note">USD amounts are approximate. Confirm the payment amount and method with the team in your ticket.</p>
+        <p className="premium-price-note">All prices are in INR. Join Hollow Hearts and contact a developer to purchase and activate premium.</p>
 
         <section id="how-to-buy" className="premium-purchase" aria-labelledby="purchase-title" tabIndex={-1}>
           <p className="idol-label">YOUR NEXT STEP</p>
-          <h2 id="purchase-title">A ticket to your next favourite song.</h2>
+          <h2 id="purchase-title">Your next favourite song starts here.</h2>
           <ol>
             <li><span>01</span><div><h3>Join Hollow Hearts</h3><p>Join our Discord community and support server using the button below.</p></div></li>
-            <li><span>02</span><div><h3>Create a purchase ticket</h3><p>Tell the team your package and duration. For Muzix 2 + Muzix 3, provide your server details. For standalone No Prefix, provide your Discord account. For Combined, include your server and the accounts of its owner and all staff members.</p></div></li>
-            <li><span>03</span><div><h3>Complete your purchase</h3><p>Follow the team's payment instructions in your ticket. They will help activate server-based bot premium, account-based No Prefix, or both according to your package.</p></div></li>
+            <li><span>02</span><div><h3>Tag a developer</h3><p>Mention a developer in the server chat. Share your preferred duration and the Discord server where you want Muzix 2 and Muzix 3 activated.</p></div></li>
+            <li><span>03</span><div><h3>Purchase and activate</h3><p>Follow the developer's payment instructions. They will help complete your purchase and activate both auxiliary bots for your server.</p></div></li>
           </ol>
           <a className="idol-button" href={SUPPORT_URL} target="_blank" rel="noreferrer"><Headphones size={18} aria-hidden="true" />Join Hollow Hearts<ArrowUpRight size={17} aria-hidden="true" /></a>
         </section>

@@ -28,7 +28,6 @@ const docsContent = [
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Audio Filters:</strong> Enhance your music with real-time filters like bass boost, nightcore, vaporwave, and equalizer presets.</span></li>
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Custom Playlists:</strong> Create, save, and manage your own personalized server playlists directly in Discord.</span></li>
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Auto-Resume & Relocation:</strong> If a host node ever drops, Muzix automatically relocates to a backup node and resumes your song right where it left off.</span></li>
-          <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>No-Prefix System:</strong> Premium seamless text recognition allows authorized users to request songs without typing a command prefix.</span></li>
         </ul>
       </>
     )
@@ -42,7 +41,6 @@ const docsContent = [
         <ul className="space-y-4">
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Invite the Bot:</strong> Use the invite button on our home page to add Muzix to your server. Make sure it has permissions to View Channels, Send Messages, Connect, and Speak.</span></li>
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Commands:</strong> Join a voice channel and use our slash commands (e.g., <code className="bg-white/10 px-2 py-1 rounded text-accent-primary">/play [song name]</code>) to start listening immediately.</span></li>
-          <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>No-Prefix System:</strong> Certain users and servers can be granted "no-prefix" status, allowing them to type song names directly without needing a command prefix.</span></li>
         </ul>
       </>
     )
@@ -91,7 +89,7 @@ const docsContent = [
         <p className="text-gray-300 text-lg leading-relaxed mb-6">To provide a seamless experience, Muzix collects specific, non-invasive data from Discord:</p>
         <ul className="space-y-4 mb-10">
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Discord IDs:</strong> Server (Guild) IDs, Voice/Text Channel IDs, and User IDs are collected to execute commands and route audio.</span></li>
-          <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Premium Data:</strong> If granted premium or "no-prefix" privileges, we store your specific Discord User/Guild ID securely in our database.</span></li>
+          <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Premium Data:</strong> If granted premium privileges, we store your specific Discord User/Guild ID securely in our database.</span></li>
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Voice State Data:</strong> Temporary information regarding user presence in voice channels to manage playback and auto-disconnect features.</span></li>
           <li className="flex gap-4 text-gray-300 text-lg"><span className="text-accent-primary font-bold">•</span> <span><strong>Message Content:</strong> The bot temporarily reads message content solely to execute text commands. We do not log or store chat history.</span></li>
         </ul>
